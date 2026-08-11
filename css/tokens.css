@@ -1,0 +1,101 @@
+/* ============================================================
+   PSG Performance design tokens — trimmed subset of the PSG
+   Performance Design System (V1.1) used by this app: fonts,
+   core colour roles, accent, status palette, radius, elevation.
+   ============================================================ */
+
+@font-face { font-family: 'Geist'; font-weight: 400; font-style: normal;
+  src: url('../fonts/Geist-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Geist'; font-weight: 500; font-style: normal;
+  src: url('../fonts/Geist-Medium.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Geist'; font-weight: 600; font-style: normal;
+  src: url('../fonts/Geist-Semibold.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Geist Mono'; font-weight: 400; font-style: normal;
+  src: url('../fonts/GeistMono-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Geist Mono'; font-weight: 500; font-style: normal;
+  src: url('../fonts/GeistMono-Medium.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Virage'; font-weight: 600; font-style: normal;
+  src: url('../fonts/Virage-Semibold.otf') format('opentype'); font-display: swap; }
+
+:root {
+  --font-sans:    'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Virage', 'Geist', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-label:   var(--font-mono);
+  --label-weight: 500;
+
+  --ink:             #171717;
+  --body:            #4d4d4d;
+  --mute:            #888888;
+  --hairline:        #E1E6F0;
+  --hairline-strong: #c3cad7;
+
+  --canvas:          #ffffff;
+  --canvas-soft:     #F6F8FA;
+  --canvas-soft-2:   #EAEEF1;
+
+  --accent:          #141428;
+  --accent-press:    #0f0f1e;
+  --accent-contrast: #ffffff;
+  --accent-soft:     rgba(20, 20, 40, 0.10);
+  --accent-line:     rgba(20, 20, 40, 0.26);
+
+  --st-green-fg: #11733d; --st-green-bg: #e8f4ec;
+  --st-grey-fg:  #5a6473; --st-grey-bg:  #f0f1f3;
+
+  --radius-sm:      6px;
+  --radius-md:      0 8px 0 8px;
+  --radius-lg:      0 12px 0 12px;
+  --radius-pill-sm: 64px;
+  --radius-full:    9999px;
+
+  --elev-2: 0px 1px 1px rgba(0,0,0,0.02), 0px 2px 2px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(0,0,0,0.08);
+  --elev-5: 0px 1px 1px rgba(0,0,0,0.02), 0px 8px 16px -4px rgba(0,0,0,0.04), 0px 24px 32px -8px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+::selection { background: var(--ink); color: var(--canvas-soft); }
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: 11px; line-height: 16px; font-weight: var(--label-weight);
+  letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--mute); margin: 0;
+}
+
+.title-lg { font-family: var(--font-display); font-weight: 600; letter-spacing: 0; color: var(--ink); margin: 0; line-height: 1.08; }
+
+.scroll { scrollbar-width: thin; scrollbar-color: var(--hairline-strong) transparent; }
+.scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll::-webkit-scrollbar-thumb { background: var(--hairline-strong); border-radius: 999px; border: 3px solid var(--canvas-soft); }
+.scroll::-webkit-scrollbar-track { background: transparent; }
+
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ds-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 9px;
+  font-family: var(--font-sans); font-size: 12.5px; font-weight: 600; line-height: 1;
+  border-radius: var(--radius-full); white-space: nowrap;
+}
+.ds-status-grey  { background: var(--st-grey-bg);  color: var(--st-grey-fg); }
+.ds-status-green { background: var(--st-green-bg); color: var(--st-green-fg); }
+
+.ds-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans); font-weight: 500;
+  border-radius: var(--radius-pill-sm);
+  border: 1px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: opacity .16s ease, background-color .16s ease, border-color .16s ease;
+}
+.ds-btn-accent { background: var(--accent); color: var(--accent-contrast); border-color: transparent; }
+.ds-btn-accent:hover { background: var(--accent-press); opacity: 1; }
+.ds-btn-accent-soft { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-line); }
+.ds-btn-accent-soft:hover { border-color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
