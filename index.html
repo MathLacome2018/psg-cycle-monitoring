@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suivi du cycle menstruel — PSG Performance</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/psg-crest-black.svg" alt="PSG">
+      <span>Performance</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="eyebrow">Cycle &amp; bien-être</div>
+      <button type="button" class="nav-btn" data-route="checkin">Check-in du jour</button>
+      <button type="button" class="nav-btn" data-route="calendar">Calendrier</button>
+    </nav>
+
+    <div class="sidebar-footnote">
+      <div class="eyebrow">Confidentialité</div>
+      <p>Accès individuel. Les données brutes sont visibles par la joueuse et le staff médical.</p>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <span class="topbar-title">Suivi du cycle menstruel</span>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-user">
+        <span class="topbar-user-avatar">LD</span>
+        <span class="topbar-user-meta">
+          <span class="topbar-user-name">L. Dupont</span>
+          <span class="topbar-user-role">Accès joueuse</span>
+        </span>
+      </div>
+    </header>
+
+    <main class="scroll">
+      <div class="page">
+
+        <section class="view" id="view-checkin">
+          <div class="view-header">
+            <div class="eyebrow" style="margin-bottom: 8px;">Check-in quotidien</div>
+            <h1 class="title-lg" id="checkin-date"></h1>
+            <p>Déclare ce que tu ressens aujourd'hui. Un symptôme par entrée, avec sa sévérité et un commentaire si besoin.</p>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="eyebrow">Jour du cycle</div>
+              <div class="stat-value" id="stat-cycle-day">—</div>
+            </div>
+            <div class="stat-card">
+              <div class="eyebrow">Dernières règles</div>
+              <div class="stat-value" id="stat-last-period">—</div>
+            </div>
+            <div class="stat-card">
+              <div class="eyebrow">Check-ins ce mois</div>
+              <div class="stat-value" id="stat-checkin-count">—</div>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <div class="eyebrow">Symptômes du jour</div>
+            <span class="count" id="entry-count"></span>
+          </div>
+
+          <div id="entry-list-wrap"></div>
+
+          <div class="entry-actions">
+            <button type="button" class="ds-btn ds-btn-accent-soft btn-add-symptom" id="btn-add-symptom">Nouveau symptôme</button>
+            <button type="button" class="ds-btn ds-btn-accent btn-save" id="btn-save">Enregistrer le check-in</button>
+            <span class="ds-status ds-status-green" id="saved-flag" style="display:none;">Check-in enregistré</span>
+
+            <div class="symptom-picker" id="symptom-picker" style="display:none;">
+              <div class="eyebrow">Sélectionner un symptôme</div>
+              <div id="symptom-picker-options"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-calendar">
+          <div class="view-header">
+            <div class="eyebrow" style="margin-bottom: 8px;">Vue calendrier</div>
+            <h1 class="title-lg" id="calendar-title"></h1>
+            <p>Une colonne par jour, une ligne par symptôme. L'intensité de la case suit la sévérité déclarée.</p>
+          </div>
+
+          <div class="calendar-card">
+            <div class="calendar-toolbar">
+              <div class="calendar-toolbar-left">
+                <span class="ds-status ds-status-grey">L. Dupont</span>
+                <span class="calendar-range" id="calendar-range"></span>
+              </div>
+              <div class="legend">
+                <span class="legend-label">Sévérité</span>
+                <div class="legend-swatches" id="legend-swatches"></div>
+                <span class="legend-range">0 → 10</span>
+              </div>
+            </div>
+
+            <div class="calendar-scroll scroll">
+              <div class="calendar-days-row" id="calendar-days-row"></div>
+              <div id="calendar-rows"></div>
+            </div>
+
+            <p class="calendar-footnote">Source : check-ins joueuse. Case vide = aucun symptôme déclaré. Colonne de droite : moyenne des jours déclarés.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
